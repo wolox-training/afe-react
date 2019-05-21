@@ -1,0 +1,32 @@
+$text-big: 24px;
+$text-medium: 16px;
+$text-small: 12px;
+$title-decoration-height: 90px;
+$title-decoration-width: 70px;
+
+// .title {
+//   align-items: center;
+//   display: flex;
+//   padding: 2em 0 0 10em;
+// }
+
+.title {
+  font-size: $text-big;
+  margin: 20px;
+  position: relative;
+  padding: 90px;
+
+  &::after {
+    content: '';
+    background-image: url('./assets/triangle.svg');
+    background-repeat: repeat-y;
+    
+    width: 100px;
+    height: 100px;
+    display: block;    
+    position: absolute;   
+    right: 220px;
+    top: 56px;
+    z-index: -1;    
+  }
+}
