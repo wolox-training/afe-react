@@ -1,0 +1,68 @@
+$tech-logo-size: 100px;
+$text-big: 24px;
+$text-medium: 16px;
+$text-small: 12px;
+
+%card {
+	height: 20em;
+	border: 1px solid $green;
+	border-radius: 5px;
+	margin: 15px 15px;
+	width: 14em;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	width: 80%;
+}
+
+.cards {
+	display: flex;
+	flex-wrap: wrap;
+	width: 80%;
+}
+
+.border-ext {
+	margin: 20px 20px;
+	@extend %card;
+}
+
+.tecnologia {
+  display: flex;
+  justify-content: center;
+}
+
+.negrita {
+	font-weight: bold;
+}
+
+.border-ext-img {
+	height: $tech-logo-size;
+	margin: 10px 0 10px;
+	width: $tech-logo-size;
+}
+
+.border-ext-h4 {
+  font-size: $text-medium;
+  margin: 0 0 10px 0;
+}
+
+.align {
+	display: flex;
+	width: 130px;
+}
+  
+.align-p {
+	font-size: $text-small;
+	margin-top: 10px;
+	text-align: center;
+}
+
+.border-int {
+	align-items: center;
+	background-color: $green;
+	display: flex;
+	flex-direction: column;
+	@extend %card;
+}
