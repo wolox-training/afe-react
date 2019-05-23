@@ -1,0 +1,31 @@
+.footer {
+  align-items: center;
+  background-color: #00ADEE;
+  display: flex;
+  flex-direction: column;
+  height: $footer-height;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.footer-title {
+  color: $white;
+  font-size: $footer-text-big;
+  letter-spacing: 25px;
+  order: 1;
+  text-transform: uppercase;
+}
+
+.footer-text {
+  color: $white;
+  font-size: 27px;
+  order: 0;
+  text-transform: uppercase;
+}
+
+.copyright {
+  align-self: flex-end;
+  color: $white;
+  margin-right: 30px;
+  order: 2;
+}
