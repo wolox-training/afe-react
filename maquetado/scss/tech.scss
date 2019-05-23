@@ -24,6 +24,18 @@ $tech-logo-size: 100px;
   }
 }
 
+.content {
+  display: flex;
+  justify-content: center;
+}
+
+.content-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 60%;
+}
+
 .logo {
   height: $tech-logo-size;
   margin: 10px 0;
