@@ -29,11 +29,11 @@ $tech-logo-size: 100px;
   justify-content: center;
 }
 
-.wrap {
+.wrap-technology {
   display: flex;
-  justify-content: space-between;
-  width: 60%;
   flex-wrap: wrap;
+  max-width: 1040px;
+  width: 100%;
 }
 
 .logo {
@@ -42,15 +42,13 @@ $tech-logo-size: 100px;
   width: $tech-logo-size;
 }
 
-.technology-title {
+.technology-text {
   font-size: $text-medium;
   margin: 8px 0;
 }
 
-.technology-release {
-  font-size: $text-medium;
+.bold {
   font-weight: bold;
-  margin: 8px 0;
 }
 
 .technology-description {
