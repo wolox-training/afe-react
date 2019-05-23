@@ -1,0 +1,22 @@
+.navbar {
+  align-items: center;
+  background: linear-gradient(to bottom, #bbbaba, #c2bfbf, #d4d2d2, #f7f5f5) bottom no-repeat;
+  background-color: $white;
+  background-size: 100% 10px;
+  display: flex;
+  height: $nav-height;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+.navbar-logo {
+  height: $nav-logo-height;
+  margin-left: 20px ;
+}
+
+.navbar-text {
+  font-size: $text-big;
+  margin-right: 20px;
+}
