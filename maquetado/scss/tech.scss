@@ -24,6 +24,18 @@ $tech-logo-size: 100px;
   }
 }
 
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  flex-wrap: wrap;
+}
+
 .logo {
   height: $tech-logo-size;
   margin: 10px 0;
@@ -32,18 +44,17 @@ $tech-logo-size: 100px;
 
 .technology-title {
   font-size: $text-medium;
-  margin: 10px 0;
+  margin: 8px 0;
 }
 
 .technology-release {
   font-size: $text-medium;
   font-weight: bold;
-  margin: 10px 0;
+  margin: 8px 0;
 }
 
 .technology-description {
   font-size: $text-small;
-  margin-top: 10px;
   text-align: center;
   width: 130px;
 }
