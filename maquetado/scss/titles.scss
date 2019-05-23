@@ -7,12 +7,12 @@
   &::after {
     content: '';
     background-image: url('./assets/triangle.svg');
-    background-repeat: no-repeat;    
-		height: 100px;
-		left: 30px;
-    position: absolute;   
-		top: 56px;
-		width: 100px;
-    z-index: -1;    
+    background-repeat: no-repeat;
+    height: 100px;
+    left: 30px;
+    position: absolute;
+    top: 56px;
+    width: 100px;
+    z-index: -1;
   }
 }

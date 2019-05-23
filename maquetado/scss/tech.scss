@@ -1,49 +1,49 @@
 $tech-logo-size: 100px;
 
 .technology {
-	align-items: center;
-	background-color: $green;
-	border-radius: 5px;
-	display: flex;
-	flex-direction: column;
-	height: 320px;
-	margin: 15px;
-	width: 230px;
-	position: relative;
+  align-items: center;
+  background-color: $green;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  height: 320px;
+  margin: 15px;
+  width: 230px;
+  position: relative;
 
-	&::before {
-		border: 1px solid $green;
-		border-radius: 5px;
-		bottom: 10px;
-		content: " ";
+  &::before {
+    border: 1px solid $green;
+    border-radius: 5px;
+    bottom: 10px;
+    content: " ";
     height: 320px;
-		position: absolute;
-		right: 10px;
+    position: absolute;
+    right: 10px;
     width: 230px;
     z-index: -1;
-	}
+  }
 }
 
 .logo {
-	height: $tech-logo-size;
-	margin: 10px 0;
-	width: $tech-logo-size;
+  height: $tech-logo-size;
+  margin: 10px 0;
+  width: $tech-logo-size;
 }
 
 .technology-title {
-	font-size: $text-medium;
-	margin: 10px 0;
+  font-size: $text-medium;
+  margin: 10px 0;
 }
 
 .technology-release {
-	font-size: $text-medium;
-	font-weight: bold;
-	margin: 10px 0;
+  font-size: $text-medium;
+  font-weight: bold;
+  margin: 10px 0;
 }
 
 .technology-description {
-	font-size: $text-small;
-	margin-top: 10px;
-	text-align: center;
-	width: 130px;
+  font-size: $text-small;
+  margin-top: 10px;
+  text-align: center;
+  width: 130px;
 }
