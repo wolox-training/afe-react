@@ -13,14 +13,12 @@
   font-size: $footer-text-big;
   letter-spacing: 25px;
   order: 1;
-  text-transform: uppercase;
 }
 
 .footer-text {
   color: $white;
   font-size: 27px;
   order: 0;
-  text-transform: uppercase;
 }
 
 .copyright {
@@ -28,4 +26,8 @@
   color: $white;
   margin-right: 30px;
   order: 2;
+}
+
+.upper {
+  text-transform: uppercase;
 }
