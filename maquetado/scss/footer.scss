@@ -3,7 +3,7 @@ $footer-height: 210px;
 
 .footer {
   align-items: center;
-  background-color: #00ADEE;
+  background-color: $blue;
   display: flex;
   flex-direction: column;
   height: $footer-height;
@@ -12,7 +12,6 @@ $footer-height: 210px;
 }
 
 .wolox-white-logo {
-  filter: brightness(100);
   height: $footer-text-big;
 }
 
