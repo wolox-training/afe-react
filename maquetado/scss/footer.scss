@@ -1,3 +1,6 @@
+$footer-text-big: 100px;
+$footer-height: 210px;
+
 .footer {
   align-items: center;
   background-color: #00ADEE;
@@ -9,9 +12,8 @@
 }
 
 .wolox-white-logo {
-  color: $white;
-  font-size: $footer-text-big;
-  letter-spacing: 25px;
+  filter: brightness(100);
+  height: $footer-text-big;
 }
 
 .footer-text {
