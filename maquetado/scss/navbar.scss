@@ -20,3 +20,13 @@
   font-size: $text-big;
   margin-right: 20px;
 }
+
+@media only screen and (max-width: 1024px) {
+  .navbar {
+    position: relative;
+  }
+
+  .navbar-text{
+    display: none;
+  }
+}
