@@ -24,12 +24,12 @@ $tech-logo-size: 100px;
   }
 }
 
-.technologies {
+.container {
   display: flex;
   justify-content: center;
 }
 
-.wrap {
+.technologies {
   display: flex;
   flex-wrap: wrap;
   max-width: 1040px;
@@ -45,6 +45,12 @@ $tech-logo-size: 100px;
 .technology-title {
   font-size: $text-medium;
   margin: 8px 0;
+}
+
+.technology-release {
+  font-size: $text-medium;
+  margin: 8px 0;
+  font-weight: bold;
 }
 
 .bold {
