@@ -1,6 +1,9 @@
+$footer-text-big: 100px;
+$footer-height: 210px;
+
 .footer {
   align-items: center;
-  background-color: #00ADEE;
+  background-color: $blue;
   display: flex;
   flex-direction: column;
   height: $footer-height;
@@ -8,24 +11,19 @@
   margin-top: 50px;
 }
 
-.footer-title {
-  color: $white;
-  font-size: $footer-text-big;
-  letter-spacing: 25px;
-  order: 1;
+.wolox-white-logo {
+  height: $footer-text-big;
 }
 
 .footer-text {
   color: $white;
   font-size: 27px;
-  order: 0;
 }
 
 .copyright {
   align-self: flex-end;
   color: $white;
   margin-right: 30px;
-  order: 2;
 }
 
 .upper {
