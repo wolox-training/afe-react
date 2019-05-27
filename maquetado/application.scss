@@ -1,0 +1,157 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+label,
+input,
+a,
+button,
+select,
+textarea {
+  color: #000;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0; }
+  h1:focus,
+  h2:focus,
+  h3:focus,
+  h4:focus,
+  h5:focus,
+  h6:focus,
+  p:focus,
+  span:focus,
+  label:focus,
+  input:focus,
+  a:focus,
+  button:focus,
+  select:focus,
+  textarea:focus {
+    outline: none; }
+
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none; }
+
+table {
+  border-collapse: collapse;
+  table-layout: fixed; }
+
+input,
+select,
+textarea,
+button {
+  border: 0;
+  border-radius: 0; }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0; }
+
+button {
+  background: transparent;
+  cursor: pointer; }
+
+button::-moz-focus-inner {
+  border: 0; }
+
+a {
+  cursor: pointer;
+  text-decoration: none; }
+  a:focus, a:active, a:hover {
+    color: #000;
+    text-decoration: none; }
+
+ul,
+li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+
+::placeholder {
+  color: #999;
+  opacity: 1; }
+
+.wrap {
+  background: red; }
+
+.technology {
+  align-items: center;
+  background-color: #BED23C;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  height: 320px;
+  margin: 15px;
+  width: 230px;
+  position: relative; }
+  .technology::before {
+    border: 1px solid #BED23C;
+    border-radius: 5px;
+    bottom: 10px;
+    content: " ";
+    height: 320px;
+    position: absolute;
+    right: 10px;
+    width: 230px;
+    z-index: -1; }
+
+.container {
+  display: flex;
+  justify-content: center; }
+
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1040px;
+  width: 100%; }
+
+.logo {
+  height: 100px;
+  margin: 10px 0;
+  width: 100px; }
+
+.technology-title {
+  font-size: 16px;
+  margin: 8px 0; }
+
+.bold {
+  font-weight: bold; }
+
+.technology-description {
+  font-size: 12px;
+  text-align: center;
+  width: 130px; }
+
+.title {
+  font-size: 24px;
+  margin: 0 200px;
+  position: relative;
+  padding: 90px; }
+  .title::after {
+    content: '';
+    background-image: url("./assets/triangle.svg");
+    background-repeat: no-repeat;
+    height: 100px;
+    left: 30px;
+    position: absolute;
+    top: 56px;
+    width: 100px;
+    z-index: -1; }
+
+body {
+  font-family: 'Roboto', sans-serif; }
+
+/*# sourceMappingURL=application.scss.map */
