@@ -11,12 +11,12 @@ $tech-logo-size: 100px;
 
 }
 
-.technologies {
+.container {
   display: flex;
   justify-content: center;
 }
 
-.wrap {
+.technologies {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
