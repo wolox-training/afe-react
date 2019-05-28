@@ -20,7 +20,7 @@ $tech-logo-size: 100px;
   grid-template-columns: repeat(3, 1fr);
 }
 
-.first-card {
+.technology:first-child {
   border-right: 1px solid $green;
   grid-row: 1 / 3;
   height: 100%;
@@ -28,19 +28,23 @@ $tech-logo-size: 100px;
   max-height: 700px;
 }
 
-.logo {
+.technology-title,
+.technology-release,
+.technology-description {
+  font-size: $text-medium;
+}
+
+.tech-logo {
   height: $tech-logo-size;
   margin: 10px 0;
   width: $tech-logo-size;
 }
 
 .technology-title {
-  font-size: $text-medium;
   margin: 8px 0;
 }
 
 .technology-release {
-  font-size: $text-medium;
   font-weight: bold;
   margin: 8px 0;
 }
@@ -60,12 +64,8 @@ $tech-logo-size: 100px;
     display: inline;
   }
 
-  .wrap {
-    display: inline;
-  }
-
-  .first-card {
-    border: none;
+  .technology:first-child {
+    border:none;
     max-height: 350px;
   }
 }
