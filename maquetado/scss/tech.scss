@@ -44,11 +44,12 @@ $tech-logo-size: 100px;
 }
 
 .technology-title,
-.technology-release {
+.technology-release,
+.technology-description {
   font-size: $text-medium
 }
 
-.logo {
+.tech-logo {
   height: $tech-logo-size;
   width: $tech-logo-size;
 }
