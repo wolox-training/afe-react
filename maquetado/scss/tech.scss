@@ -36,24 +36,24 @@ $tech-logo-size: 100px;
   width: 100%;
 }
 
-.logo {
+.technology-description,
+.technology-release,
+.technology-title {
+  font-size: $text-medium;
+}
+
+.tech-logo {
   height: $tech-logo-size;
   margin: 10px 0;
   width: $tech-logo-size;
 }
 
 .technology-title {
-  font-size: $text-medium;
   margin: 8px 0;
 }
 
 .technology-release {
-  font-size: $text-medium;
   margin: 8px 0;
-  font-weight: bold;
-}
-
-.bold {
   font-weight: bold;
 }
 
