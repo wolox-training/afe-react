@@ -15,7 +15,7 @@ $tech-logo-size: 100px;
     border: 1px solid $green;
     border-radius: 5px;
     bottom: 10px;
-    content: " ";
+    content: '';
     height: 320px;
     position: absolute;
     right: 10px;
@@ -24,10 +24,11 @@ $tech-logo-size: 100px;
   }
 }
 
-.logo,
+.tech-logo,
 .technology-title,
 .technology-release,
 .technology-description {
+  font-size: $text-medium;
   margin: 10px 0;
 }
 
@@ -41,12 +42,6 @@ $tech-logo-size: 100px;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 0 380px;
-}
-
-.technology-title,
-.technology-release,
-.technology-description {
-  font-size: $text-medium
 }
 
 .tech-logo {
