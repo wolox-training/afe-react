@@ -40,16 +40,22 @@ $tech-logo-size: 100px;
 .technologies {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 0 380px;
+  max-width: 1040px;
+  width: 100%;
 }
 
 .tech-logo {
   height: $tech-logo-size;
+  margin: 10px 0;
   width: $tech-logo-size;
 }
 
+.technology-title {
+  margin: 8px 0;
+}
+
 .technology-release {
+  margin: 8px 0;
   font-weight: bold;
 }
 
