@@ -1,0 +1,31 @@
+$footer-text-big: 100px;
+$footer-height: 210px;
+
+.footer {
+  align-items: center;
+  background-color: $blue;
+  display: flex;
+  flex-direction: column;
+  height: $footer-height;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.wolox-white-logo {
+  height: $footer-text-big;
+}
+
+.footer-text {
+  color: $white;
+  font-size: 27px;
+}
+
+.copyright {
+  align-self: flex-end;
+  color: $white;
+  margin-right: 30px;
+}
+
+.upper {
+  text-transform: uppercase;
+}
