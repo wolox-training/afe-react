@@ -19,9 +19,15 @@ $tech-logo-size: 100px;
     height: 320px;
     position: absolute;
     right: 10px;
+    transition: bottom .5s ease, right .5s ease;
     width: 230px;
     z-index: -1;
   }
+}
+
+.technology:hover::before {
+  bottom: -10px;
+  right: -10px;
 }
 
 .tech-logo,
@@ -46,16 +52,11 @@ $tech-logo-size: 100px;
 
 .tech-logo {
   height: $tech-logo-size;
-  margin: 10px 0;
   width: $tech-logo-size;
 }
 
-.technology-title {
-  margin: 8px 0;
-}
 
 .technology-release {
-  margin: 8px 0;
   font-weight: bold;
 }
 
