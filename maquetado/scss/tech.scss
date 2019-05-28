@@ -1,0 +1,60 @@
+$tech-logo-size: 100px;
+
+.technology {
+  align-items: center;
+  background-color: $green;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  height: 320px;
+  margin: 15px;
+  width: 230px;
+  position: relative;
+
+  &::before {
+    border: 1px solid $green;
+    border-radius: 5px;
+    bottom: 10px;
+    content: '';
+    height: 320px;
+    position: absolute;
+    right: 10px;
+    width: 230px;
+    z-index: -1;
+  }
+}
+
+.tech-logo,
+.technology-title,
+.technology-release,
+.technology-description {
+  font-size: $text-medium;
+  margin: 10px 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 380px;
+}
+
+.tech-logo {
+  height: $tech-logo-size;
+  width: $tech-logo-size;
+}
+
+.technology-release {
+  font-weight: bold;
+}
+
+.technology-description {
+  font-size: $text-small;
+  text-align: center;
+  width: 130px;
+}
