@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Square from '../Square';
 
@@ -37,7 +38,7 @@ class Board extends Component {
   render() {
     return (
       <div>
-        {/* <div className={styles.status}>{status}</div> */}
+        <div className={styles.status}>{}</div>
         <div className={styles.boardRow}>
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -57,5 +58,10 @@ class Board extends Component {
     );
   }
 }
+
+Board.propTypes = {
+  squares: PropTypes.array,
+  onClick: PropTypes.func
+};
 
 export default Board;
