@@ -4,19 +4,21 @@ import PropTypes from 'prop-types';
 import styles from './styles.module.scss';
 
 function Square(props) {
+  const { value, onClick } = props;
   return (
     <button
+      type="button"
       className={styles.square}
-      onClick={props.onClick}
+      onClick={onClick}
     >
-      {props.value}
+      {value}
     </button>
   );
 }
 
 Square.propTypes = {
-  value: PropTypes.string,
-  onClick: PropTypes.func
+  value: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 export default Square;
