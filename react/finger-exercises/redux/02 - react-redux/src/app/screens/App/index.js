@@ -3,6 +3,8 @@ import store from '@redux/store';
 import Navbar from '@components/Navbar';
 import Footer from '@components/Footer';
 
+import actions from '../../../redux/book/actions';
+
 import Book from './components/Book';
 import Search from './components/Search';
 import ShoppingCart from './components/ShoppingCart';
@@ -11,7 +13,8 @@ import styles from './styles.scss';
 class App extends Component {
   state = {
     books: [],
-    bookSelected: []
+    bookSelected: [],
+    length: 0
   };
 
   componentDidMount() {
@@ -19,20 +22,24 @@ class App extends Component {
       const { books, bookSelected } = store.getState();
       this.setState({ books, bookSelected });
     });
-    // TODO to implement the dispatch
+    store.dispatch(actions.getBooks());
   }
 
-  // TODO to implement the dispatch
-  onSearch = value => {};
+  onSearch = value => {
+    store.dispatch(actions.searchBook(value));
+  };
 
-  // TODO to implement the dispatch
-  addToCart = item => {};
+  addToCart = item => {
+    store.dispatch(actions.addToCart(item));
+  };
 
-  // TODO to implement the dispatch
-  addItem = itemId => {};
+  addItem = itemId => {
+    store.dispatch(actions.addItem(itemId));
+  };
 
-  // TODO to implement the dispatch
-  removeItem = itemId => {};
+  removeItem = itemId => {
+    store.dispatch(actions.removeItem(itemId));
+  };
 
   CONFIGURATION_BUTTON = {
     add: {
