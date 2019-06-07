@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import store from '@redux/store';
 import Navbar from '@components/Navbar';
 import Footer from '@components/Footer';
-
-import actions from '../../../redux/book/actions';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import actions from '@redux/book/actions';
 
 import Book from './components/Book';
 import Search from './components/Search';
@@ -11,70 +11,46 @@ import ShoppingCart from './components/ShoppingCart';
 import styles from './styles.scss';
 
 class App extends Component {
-  state = {
-    books: [],
-    bookSelected: [],
-    length: 0
-  };
-
   componentDidMount() {
-    store.subscribe(() => {
-      const { books, bookSelected } = store.getState();
-      this.setState({ books, bookSelected });
-    });
-    store.dispatch(actions.getBooks());
+    this.props.getBooks();
   }
-
-  onSearch = value => {
-    store.dispatch(actions.searchBook(value));
-  };
-
-  addToCart = item => {
-    store.dispatch(actions.addToCart(item));
-  };
-
-  addItem = itemId => {
-    store.dispatch(actions.addItem(itemId));
-  };
-
-  removeItem = itemId => {
-    store.dispatch(actions.removeItem(itemId));
-  };
 
   CONFIGURATION_BUTTON = {
     add: {
       text: 'Add to cart',
-      function: this.addToCart
+      function: this.props.addToCart
     },
     remove: {
       text: 'Remove',
-      function: this.removeItem,
+      function: this.props.removeItem,
       isDanger: true
     }
   };
 
   renderBooks = item => {
-    const showButton = !this.state.bookSelected.some(el => el.id === item.id);
+    const { bookSelected } = this.props;
+    const showButton = !bookSelected.some(el => el.id === item.id);
     const configButton = showButton ? this.CONFIGURATION_BUTTON.add : this.CONFIGURATION_BUTTON.remove;
     return <Book key={item.id} data={item} configButton={configButton} />;
   };
 
   render() {
+    const { books, bookSelected, onSearch, addItem, removeItem } = this.props;
     return (
       <Fragment>
         <Navbar />
         <div className={styles.container}>
-          <Search onSearch={this.onSearch} />
-          {this.state.books.length ? (
-            this.state.books.map(this.renderBooks)
+          <Search onSearch={onSearch} />
+          {books.length ? (
+            books.map(this.renderBooks)
           ) : (
             <div className={styles.noData}>
               <h2 className={styles.title}>No Data</h2>
             </div>
           )}
         </div>
-        {this.state.bookSelected.length ? (
-          <ShoppingCart data={this.state.bookSelected} addItem={this.addItem} removeItem={this.removeItem} />
+        {bookSelected.length ? (
+          <ShoppingCart data={bookSelected} addItem={addItem} removeItem={removeItem} />
         ) : null}
         <Footer />
       </Fragment>
@@ -82,4 +58,33 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  books: state.books,
+  bookSelected: state.bookSelected
+});
+
+const mapDispatchToProps = dispatch => {
+  const { getBooks, searchBook, addItem, addToCart, removeItem } = actions;
+  return {
+    getBooks: () => dispatch(getBooks()),
+    addItem: itemId => dispatch(addItem(itemId)),
+    addToCart: item => dispatch(addToCart(item)),
+    removeItem: item => dispatch(removeItem(item)),
+    onSearch: value => dispatch(searchBook(value))
+  };
+};
+
+App.propTypes = {
+  books: PropTypes.array,
+  bookSelected: PropTypes.array,
+  onSearch: PropTypes.func,
+  addItem: PropTypes.func,
+  removeItem: PropTypes.func,
+  addToCart: PropTypes.func,
+  getBooks: PropTypes.func
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

@@ -24,9 +24,9 @@ function reducer(state = initialState, action) {
         bookSelected: [...state.bookSelected, action.payload]
       };
     case actions.ADD_ITEM: // TODO to implement the logic
-      state.bookSelected.filter(book => {
+      state.bookSelected.forEach(book => {
         if (book.id === action.payload) {
-          book.quantity++;
+          book.quantity += 1;
         }
       });
       return {
@@ -34,7 +34,7 @@ function reducer(state = initialState, action) {
         bookSelected: [...state.bookSelected]
       };
     case actions.REMOVE_ITEM: // TODO to implement the logic
-      state.bookSelected.filter(book => {
+      state.bookSelected.forEach(book => {
         if (book.id !== action.payload) {
           arr.push(book);
         }
@@ -51,7 +51,7 @@ function reducer(state = initialState, action) {
           length: state.length - 1
         };
       }
-      state.books.filter(book => {
+      state.books.forEach(book => {
         if (book.name.toLowerCase().includes(action.payload)) {
           arr.push(book);
         }
