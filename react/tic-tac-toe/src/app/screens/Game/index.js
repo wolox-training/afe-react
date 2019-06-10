@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 
+import api from '../../../config/api';
+
 import styles from './styles.module.scss';
 import Board from './components/Board';
+import Matches from './components/Matches';
 import { calculateWinner } from './utils';
 
 class Game extends Component {
@@ -10,8 +13,19 @@ class Game extends Component {
       squares: Array(9).fill(null)
     }],
     stepNumber: 0,
-    xIsNext: true
+    xIsNext: true,
+    matches: [],
+    spinner: false
   };
+
+  componentDidMount() {
+    api.get('/matches')
+      .then(resp => resp.data)
+      .then(matches => this.setState({
+        matches,
+        spinner: true
+      }));
+  }
 
   handleClick = i => {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
@@ -40,7 +54,7 @@ class Game extends Component {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
-
+    const { spinner, matches, xIsNext } = this.state;
     const moves = history.map((step, move) => {
       const desc = move
         ? `Go to move #${move}`
@@ -56,10 +70,11 @@ class Game extends Component {
     if (winner) {
       status = `Winner: ${winner}`;
     } else {
-      status = `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
+      status = `Next player: ${xIsNext ? 'X' : 'O'}`;
     }
     return (
       <div className={styles.game}>
+        <Matches matches={matches} spinner={spinner} />
         <div className={styles.gameBoard}>
           <Board
             squares={current.squares}

@@ -1,0 +1,28 @@
+table {
+  margin-right: 20px;
+  table-layout: auto;
+}
+
+.fixed {
+  table-layout: fixed;
+}
+
+table,
+td,
+th {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 5px;
+  border: solid 1px;
+  text-align: center;
+}
+
+.spinner {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 275px;
+}
