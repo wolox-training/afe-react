@@ -3,8 +3,7 @@ import { actions } from './actions';
 const initialState = {
   books: [],
   bookSelected: [],
-  originalData: [],
-  length: 0
+  originalData: []
 };
 
 function reducer(state = initialState, action) {
@@ -13,17 +12,17 @@ function reducer(state = initialState, action) {
   }
   const arr = [];
   switch (action.type) {
-    case actions.GET_BOOKS: // TODO to implement the logic
+    case actions.GET_BOOKS:
       return {
         ...state,
-        books: [...action.payload]
+        books: action.payload
       };
-    case actions.ADD_TO_CART: // TODO to implement the logic
+    case actions.ADD_TO_CART:
       return {
         ...state,
         bookSelected: [...state.bookSelected, action.payload]
       };
-    case actions.ADD_ITEM: // TODO to implement the logic
+    case actions.ADD_ITEM:
       state.bookSelected.forEach(book => {
         if (book.id === action.payload) {
           book.quantity += 1;
@@ -33,8 +32,8 @@ function reducer(state = initialState, action) {
         ...state,
         bookSelected: [...state.bookSelected]
       };
-    case actions.REMOVE_ITEM: // TODO to implement the logic
-      state.bookSelected.forEach(book => {
+    case actions.REMOVE_ITEM:
+      state.bookSelected.filter(book => {
         if (book.id !== action.payload) {
           arr.push(book);
         }
@@ -43,23 +42,15 @@ function reducer(state = initialState, action) {
         ...state,
         bookSelected: arr
       };
-    case actions.SEARCH_ITEM: // TODO to implement the logic
-      if (action.payload.length <= state.length) {
-        return {
-          ...state,
-          books: state.originalData,
-          length: state.length - 1
-        };
-      }
-      state.books.forEach(book => {
-        if (book.name.toLowerCase().includes(action.payload)) {
+    case actions.SEARCH_ITEM:
+      state.originalData.forEach(book => {
+        if (book.name.toLowerCase().includes(action.payload.toLowerCase())) {
           arr.push(book);
         }
       });
       return {
         ...state,
-        books: arr,
-        length: state.length + 1
+        books: arr
       };
 
     default:

@@ -3,7 +3,7 @@ import authActionsCreators from '../01 - actions and reducers/auth/actions';
 import booksActionsCreators from '../01 - actions and reducers/books/actions';
 
 describe('Actions', () => {
-  xit('sets your favorite book', () => {
+  it('sets your favorite book', () => {
     /*
     Look at the reducer in reducer.js
     It knows how to handle an action with type actions.SET_FAVORITE_BOOK.
