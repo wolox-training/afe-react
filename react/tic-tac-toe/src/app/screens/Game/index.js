@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 
-import api from '../../../config/api';
+import matchesService from '../../../services';
 
 import styles from './styles.module.scss';
 import Board from './components/Board';
 import Matches from './components/Matches';
 import { calculateWinner } from './utils';
+
 
 class Game extends Component {
   state = {
@@ -15,16 +16,19 @@ class Game extends Component {
     stepNumber: 0,
     xIsNext: true,
     matches: [],
-    spinner: false
+    isLoading: false
   };
 
-  componentDidMount() {
-    api.get('/matches')
-      .then(resp => resp.data)
-      .then(matches => this.setState({
-        matches,
-        spinner: true
-      }));
+  async componentDidMount() {
+    const response = await matchesService.getMatches();
+    if (response.ok) {
+      this.setState({
+        matches: response.data,
+        isLoading: true
+      });
+    } else {
+      console.error(response);
+    }
   }
 
   handleClick = i => {
@@ -54,7 +58,7 @@ class Game extends Component {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
-    const { spinner, matches, xIsNext } = this.state;
+    const { isLoading, matches, xIsNext } = this.state;
     const moves = history.map((step, move) => {
       const desc = move
         ? `Go to move #${move}`
@@ -74,7 +78,7 @@ class Game extends Component {
     }
     return (
       <div className={styles.game}>
-        <Matches matches={matches} spinner={spinner} />
+        <Matches matches={matches} isLoading={isLoading} />
         <div className={styles.gameBoard}>
           <Board
             squares={current.squares}

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import styles from './styles.module.scss';
 
 const Matches = (props) => (
-  props.spinner
+  props.isLoading
     ? (
       <table>
         <tbody>
@@ -33,8 +33,8 @@ const Matches = (props) => (
 );
 
 Matches.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  matches: PropTypes.array
+  isLoading: PropTypes.bool.isRequired,
+  matches: PropTypes.arrayOf
 };
 
 export default Matches;
