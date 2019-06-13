@@ -1,17 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
-
-import App from './app';
 import './config/i18n';
 import './scss/application.scss';
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+
 import { register } from './serviceWorker';
+import App from './app';
+import store from './redux/store';
 
 const render = () => {
   ReactDOM.render(
-    <AppContainer>
+    <Provider store={store}>
       <App />
-    </AppContainer>,
+    </Provider>,
     document.getElementById('root')
   );
 };
