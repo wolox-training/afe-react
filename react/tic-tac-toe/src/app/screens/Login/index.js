@@ -21,6 +21,7 @@ class LoginFormContainer extends Component {
     const { users, dispatchToken, history } = this.props;
     users.forEach(user => {
       if (values.email === user.email && values.pass === user.password) {
+        // TODO cambiar la funcion sendToken x selectedUser
         dispatchToken(user.token);
         history.push('/game');
         window.localStorage.setItem('token', user.token);

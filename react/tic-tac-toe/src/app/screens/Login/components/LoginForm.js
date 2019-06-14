@@ -10,23 +10,25 @@ class LoginForm extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <form onSubmit={handleSubmit}>
-        <Field
-          name="email"
-          component={customInput}
-          type="text"
-          label="Email"
-          validate={[required, emailValid]}
-        />
-        <Field
-          name="pass"
-          component={customInput}
-          type="password"
-          label="Password"
-          validate={[required, minLength, maxLength]}
-        />
-        <button type="submit">Submit</button>
-      </form>
+      <div className="LoginForm">
+        <form onSubmit={handleSubmit}>
+          <Field
+            name="email"
+            component={customInput}
+            type="text"
+            label="Email"
+            validate={[required, emailValid]}
+          />
+          <Field
+            name="pass"
+            component={customInput}
+            type="password"
+            label="Password"
+            validate={[required, minLength, maxLength]}
+          />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     );
   }
 }

@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import matchesService from '../../../services';
 
 import styles from './styles.module.scss';
 import Board from './components/Board';
 import Matches from './components/Matches';
+import Topbar from './components/Topbar';
 import { calculateWinner } from './utils';
 
 
@@ -77,19 +78,22 @@ class Game extends Component {
       status = `Next player: ${xIsNext ? 'X' : 'O'}`;
     }
     return (
-      <div className={styles.game}>
-        <Matches matches={matches} isLoading={isLoading} />
-        <div className={styles.gameBoard}>
-          <Board
-            squares={current.squares}
-            onClick={(i) => this.handleClick(i)}
-          />
+      <Fragment>
+        <Topbar />
+        <div className={styles.game}>
+          <Matches matches={matches} isLoading={isLoading} />
+          <div className={styles.gameBoard}>
+            <Board
+              squares={current.squares}
+              onClick={(i) => this.handleClick(i)}
+            />
+          </div>
+          <div className={styles.gameInfo}>
+            {status}
+            <ol>{moves}</ol>
+          </div>
         </div>
-        <div className={styles.gameInfo}>
-          {status}
-          <ol>{moves}</ol>
-        </div>
-      </div>
+      </Fragment>
     );
   }
 }

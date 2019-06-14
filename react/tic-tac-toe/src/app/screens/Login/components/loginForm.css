@@ -118,3 +118,8 @@ button[type='submit'] {
   left: 20px;
   top: -8px;
 }
+
+.LoginForm {
+  height: 95vh;
+  display: flex
+}
