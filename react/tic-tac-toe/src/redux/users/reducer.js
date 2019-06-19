@@ -1,8 +1,9 @@
-import { GET_USERS, TOKEN } from '../../constants';
+import { GET_USERS, TOKEN, SELECTED_USER } from '../../constants';
 
 const initialState = {
   users: [],
-  token: ''
+  token: '',
+  selectedUser: {}
 };
 
 export default (state = initialState, action) => {
@@ -16,6 +17,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         token: action.payload
+      };
+    case SELECTED_USER:
+      return {
+        ...state,
+        selectedUser: action.payload
       };
     default:
       return state;

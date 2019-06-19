@@ -1,0 +1,31 @@
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  grid-area: picture;
+}
+
+.grid {
+  display: grid;
+  grid-template-rows: 30% 40% 30%;
+  grid-template-columns: [first] 33% [line2] 33% [line3] 33% [end];
+  align-items: center;
+  grid-template-areas:
+    ". text ."
+    ". picture .";
+  height: 80vh;
+}
+
+
+.profileLogo {
+  height: 250px;
+  width: 250px;
+  margin-bottom: 20px;
+}
+
+.profileText {
+  font-size: 60px;
+  grid-area: text;
+  justify-self: center
+}

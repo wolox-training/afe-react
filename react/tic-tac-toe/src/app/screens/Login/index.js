@@ -3,26 +3,31 @@ import { connect } from 'react-redux';
 import { SubmissionError } from 'redux-form';
 import PropTypes from 'prop-types';
 
-import { fetchUsers, sendToken } from '../../../redux/users/actions';
+import { fetchUsers, sendToken, loggedUser } from '../../../redux/users/actions';
 
 import LoginForm from './components/LoginForm';
 
 class LoginFormContainer extends Component {
-  componentDidMount() {
-    const { getUsers, dispatchToken, history } = this.props;
+  async componentDidMount() {
+    const { getUsers, dispatchToken, history, selectedUser } = this.props;
+    await getUsers();
     if (window.localStorage.getItem('token')) {
       dispatchToken(window.localStorage.getItem('token'));
+      this.props.users.forEach(user => {
+        if (user.token === window.localStorage.getItem('token')) {
+          selectedUser(user);
+        }
+      });
       history.push('/game');
     }
-    getUsers();
   }
 
   submit = values => {
-    const { users, dispatchToken, history } = this.props;
+    const { users, dispatchToken, history, selectedUser } = this.props;
     users.forEach(user => {
       if (values.email === user.email && values.pass === user.password) {
-        // TODO cambiar la funcion sendToken x selectedUser
         dispatchToken(user.token);
+        selectedUser(user);
         history.push('/game');
         window.localStorage.setItem('token', user.token);
       } else {
@@ -44,12 +49,15 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getUsers: () => dispatch(fetchUsers()),
-  dispatchToken: (token) => dispatch(sendToken(token))
+  dispatchToken: token => dispatch(sendToken(token)),
+  selectedUser: user => dispatch(loggedUser(user))
 });
 
 LoginFormContainer.propTypes = {
   dispatchToken: PropTypes.func.isRequired,
   getUsers: PropTypes.func.isRequired,
+  history: PropTypes.func.isRequired,
+  selectedUser: PropTypes.func.isRequired,
   users: PropTypes.arrayOf
 };
 

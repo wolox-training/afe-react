@@ -5,7 +5,7 @@ import matchesService from '../../../services';
 import styles from './styles.module.scss';
 import Board from './components/Board';
 import Matches from './components/Matches';
-import Topbar from './components/Topbar';
+// import Topbar from './components/Topbar';
 import { calculateWinner } from './utils';
 
 
@@ -79,7 +79,7 @@ class Game extends Component {
     }
     return (
       <Fragment>
-        <Topbar />
+        {/* <Topbar /> */}
         <div className={styles.game}>
           <Matches matches={matches} isLoading={isLoading} />
           <div className={styles.gameBoard}>

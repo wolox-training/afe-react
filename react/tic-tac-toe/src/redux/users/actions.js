@@ -1,5 +1,5 @@
 import matchesService from '../../services';
-import { GET_USERS, TOKEN } from '../../constants';
+import { GET_USERS, TOKEN, SELECTED_USER } from '../../constants';
 
 export const fetchUsers = () => async dispatch => {
   const users = await matchesService.getUsers();
@@ -14,6 +14,10 @@ export const sendToken = (token) => dispatch => {
   dispatch(actionsCreators.dispatchToken(token));
 };
 
+export const loggedUser = user => dispatch => {
+  dispatch(actionsCreators.selectedUser(user));
+};
+
 const actionsCreators = {
   getUsers: users => ({
     type: GET_USERS,
@@ -22,6 +26,10 @@ const actionsCreators = {
   dispatchToken: token => ({
     type: TOKEN,
     payload: token
+  }),
+  selectedUser: user => ({
+    type: SELECTED_USER,
+    payload: user
   })
 };
 
