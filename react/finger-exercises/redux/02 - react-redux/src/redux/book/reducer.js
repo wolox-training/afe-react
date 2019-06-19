@@ -32,27 +32,22 @@ function reducer(state = initialState, action) {
         ...state,
         bookSelected: [...state.bookSelected]
       };
-    case actions.REMOVE_ITEM:
-      state.bookSelected.filter(book => {
-        if (book.id !== action.payload) {
-          arr.push(book);
-        }
-      });
+    case actions.REMOVE_ITEM: {
+      const bookSelectedFiltered = state.bookSelected.filter(book => book.id !== action.payload && book);
       return {
         ...state,
-        bookSelected: arr
+        bookSelected: bookSelectedFiltered
       };
-    case actions.SEARCH_ITEM:
-      state.originalData.forEach(book => {
-        if (book.name.toLowerCase().includes(action.payload.toLowerCase())) {
-          arr.push(book);
-        }
-      });
+    }
+    case actions.SEARCH_ITEM: {
+      const originalDataFiltered = state.originalData.filter(
+        book => book.name.toLowerCase().includes(action.payload.toLowerCase()) && book
+      );
       return {
         ...state,
-        books: arr
+        books: originalDataFiltered
       };
-
+    }
     default:
       return state;
   }

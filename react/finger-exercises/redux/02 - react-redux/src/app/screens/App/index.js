@@ -10,7 +10,7 @@ import Search from './components/Search';
 import ShoppingCart from './components/ShoppingCart';
 import styles from './styles.scss';
 
-const { getBooks, searchBook, addItem, addToCart, removeItem } = actions;
+const { getBooks, searchBook, addToCart, removeItem } = actions;
 
 class App extends Component {
   componentDidMount() {
@@ -51,7 +51,7 @@ class App extends Component {
             </div>
           )}
         </div>
-        {bookSelected.length ? <ShoppingCart /> : null}
+        {bookSelected.length && <ShoppingCart />}
         <Footer />
       </Fragment>
     );
@@ -65,7 +65,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getBooks: () => dispatch(getBooks()),
-  addItem: itemId => dispatch(addItem(itemId)),
   addToCart: item => dispatch(addToCart(item)),
   removeItem: item => dispatch(removeItem(item)),
   onSearch: value => dispatch(searchBook(value))
