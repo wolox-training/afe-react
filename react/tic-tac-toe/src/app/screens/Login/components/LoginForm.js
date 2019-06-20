@@ -19,7 +19,7 @@ class LoginForm extends Component {
           validate={[required, emailValid]}
         />
         <Field
-          name="pass"
+          name="password"
           component={customInput}
           type="password"
           label="Password"
