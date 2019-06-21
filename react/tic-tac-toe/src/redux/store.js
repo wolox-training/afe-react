@@ -2,11 +2,11 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import thunk from 'redux-thunk';
 
-import userReducer from './users/reducer';
+import login from './login/reducer';
 
 const reducers = {
   form: formReducer,
-  users: userReducer
+  login
 };
 
 
