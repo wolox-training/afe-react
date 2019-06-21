@@ -14,7 +14,7 @@ class Game extends Component {
       squares: Array(9).fill(null)
     }],
     stepNumber: 0,
-    xIsNext: true,
+    xIsNext: true
   };
 
   componentDidMount() {
@@ -70,7 +70,7 @@ class Game extends Component {
     }
     return (
       <div className={styles.game}>
-        <Matches matches={matches} isLoading={matches.length === 0 ? false : true} />
+        <Matches matches={matches} isLoading={matches.length !== 0} />
         <div className={styles.gameBoard}>
           <Board
             squares={current.squares}

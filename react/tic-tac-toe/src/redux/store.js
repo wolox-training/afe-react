@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 import matches from './matches/reducers';
 
 const reducers = {
-    matches
+  matches
 };
 
 
