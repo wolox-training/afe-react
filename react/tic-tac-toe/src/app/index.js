@@ -16,7 +16,7 @@ function App(props) {
     <Router>
       <div>
         <Route exact path="/" component={Login} />
-        <Topbar props={props} />
+        <Route render={() => token && <Topbar props={props} />} />
         <Route
           path="/game" render={(props)=> token ? <Game props={props} />
             : <Redirect to="/" />
