@@ -5,4 +5,3 @@ export default {
   getUsers: () => api.get('/users'),
   login: (values) => api.post('/login', values)
 };
-

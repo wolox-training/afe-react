@@ -10,6 +10,8 @@ import Search from './components/Search';
 import ShoppingCart from './components/ShoppingCart';
 import styles from './styles.scss';
 
+const { getBooks, searchBook, addToCart, removeItem } = actions;
+
 class App extends Component {
   componentDidMount() {
     this.props.getBooks();
@@ -35,7 +37,7 @@ class App extends Component {
   };
 
   render() {
-    const { books, bookSelected, onSearch, addItem, removeItem } = this.props;
+    const { books, bookSelected, onSearch } = this.props;
     return (
       <Fragment>
         <Navbar />
@@ -49,9 +51,7 @@ class App extends Component {
             </div>
           )}
         </div>
-        {bookSelected.length ? (
-          <ShoppingCart data={bookSelected} addItem={addItem} removeItem={removeItem} />
-        ) : null}
+        {bookSelected.length && <ShoppingCart />}
         <Footer />
       </Fragment>
     );
@@ -63,16 +63,12 @@ const mapStateToProps = state => ({
   bookSelected: state.bookSelected
 });
 
-const mapDispatchToProps = dispatch => {
-  const { getBooks, searchBook, addItem, addToCart, removeItem } = actions;
-  return {
-    getBooks: () => dispatch(getBooks()),
-    addItem: itemId => dispatch(addItem(itemId)),
-    addToCart: item => dispatch(addToCart(item)),
-    removeItem: item => dispatch(removeItem(item)),
-    onSearch: value => dispatch(searchBook(value))
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  getBooks: () => dispatch(getBooks()),
+  addToCart: item => dispatch(addToCart(item)),
+  removeItem: item => dispatch(removeItem(item)),
+  onSearch: value => dispatch(searchBook(value))
+});
 
 App.propTypes = {
   books: PropTypes.array,

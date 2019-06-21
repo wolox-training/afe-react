@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import matchesService from '../../../services';
+import { fetchMatches } from '../../../redux/matches/actions';
 
 import styles from './styles.module.scss';
 import Board from './components/Board';
 import Matches from './components/Matches';
 import { calculateWinner } from './utils';
-
 
 class Game extends Component {
   state = {
@@ -14,21 +14,12 @@ class Game extends Component {
       squares: Array(9).fill(null)
     }],
     stepNumber: 0,
-    xIsNext: true,
-    matches: [],
-    isLoading: false
+    xIsNext: true
   };
 
-  async componentDidMount() {
-    const response = await matchesService.getMatches();
-    if (response.ok) {
-      this.setState({
-        matches: response.data,
-        isLoading: true
-      });
-    } else {
-      console.error(response);
-    }
+  componentDidMount() {
+    const { getMatches } = this.props;
+    getMatches();
   }
 
   handleClick = i => {
@@ -58,7 +49,8 @@ class Game extends Component {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
-    const { isLoading, matches, xIsNext } = this.state;
+    const { xIsNext } = this.state;
+    const { matches } = this.props;
     const moves = history.map((step, move) => {
       const desc = move
         ? `Go to move #${move}`
@@ -78,7 +70,7 @@ class Game extends Component {
     }
     return (
       <div className={styles.game}>
-        <Matches matches={matches} isLoading={isLoading} />
+        <Matches matches={matches} isLoading={matches.length !== 0} />
         <div className={styles.gameBoard}>
           <Board
             squares={current.squares}
@@ -94,4 +86,12 @@ class Game extends Component {
   }
 }
 
-export default Game;
+const mapStateToProps = state => ({
+  matches: state.matches.matches
+});
+
+const mapDispatchToProps = dispatch => ({
+  getMatches: () => dispatch(fetchMatches())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Game);
