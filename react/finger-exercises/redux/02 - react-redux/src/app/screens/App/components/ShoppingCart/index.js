@@ -8,6 +8,8 @@ import actions from '@redux/book/actions';
 import Item from './components/Item';
 import styles from './styles.scss';
 
+const { addItem, removeItem } = actions;
+
 class ShoppingCart extends PureComponent {
   state = {
     open: false
@@ -53,13 +55,10 @@ const mapStateToProps = state => ({
   data: state.bookSelected
 });
 
-const mapDispatchToProps = dispatch => {
-  const { addItem, removeItem } = actions;
-  return {
-    addItem: itemId => dispatch(addItem(itemId)),
-    removeItem: item => dispatch(removeItem(item))
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  addItem: itemId => dispatch(addItem(itemId)),
+  removeItem: item => dispatch(removeItem(item))
+});
 
 export default connect(
   mapStateToProps,

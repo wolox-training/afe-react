@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
+import { sendToken } from '../redux/login/actions';
 
 import Game from './screens/Game';
 import Login from './screens/Login';
@@ -29,9 +31,7 @@ function App(props) {
 }
 
 const mapStateToProps = state => ({
-  token: state.users.token,
-  users: state.users.users,
-  selectedUser: state.users.selectedUser
+  token: state.login.token
 });
 
 App.propTypes = {
