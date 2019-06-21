@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { fetchMatches } from '../../../redux/matches/actions';
 
 import styles from './styles.module.scss';
 import Board from './components/Board';
+import Matches from './components/Matches';
 import { calculateWinner } from './utils';
 
 class Game extends Component {
@@ -12,6 +16,11 @@ class Game extends Component {
     stepNumber: 0,
     xIsNext: true
   };
+
+  componentDidMount() {
+    const { getMatches } = this.props;
+    getMatches();
+  }
 
   handleClick = i => {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
@@ -40,7 +49,8 @@ class Game extends Component {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
-
+    const { xIsNext } = this.state;
+    const { matches } = this.props;
     const moves = history.map((step, move) => {
       const desc = move
         ? `Go to move #${move}`
@@ -56,10 +66,11 @@ class Game extends Component {
     if (winner) {
       status = `Winner: ${winner}`;
     } else {
-      status = `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
+      status = `Next player: ${xIsNext ? 'X' : 'O'}`;
     }
     return (
       <div className={styles.game}>
+        <Matches matches={matches} isLoading={matches.length !== 0} />
         <div className={styles.gameBoard}>
           <Board
             squares={current.squares}
@@ -75,4 +86,12 @@ class Game extends Component {
   }
 }
 
-export default Game;
+const mapStateToProps = state => ({
+  matches: state.matches.matches
+});
+
+const mapDispatchToProps = dispatch => ({
+  getMatches: () => dispatch(fetchMatches())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Game);

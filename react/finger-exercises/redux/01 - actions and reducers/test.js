@@ -15,7 +15,7 @@ describe('Actions', () => {
     expect(store.getState().books.favoriteBook).toEqual('The Metamorphosis');
   });
 
-  xit('adds a book', () => {
+  it('adds a book', () => {
     /*
     Look at the actionCreators object in actions.js
     It knows how to dispatch an action with type actions.ADD_READ_BOOK.
@@ -27,7 +27,7 @@ describe('Actions', () => {
     expect(store.getState().books.readBooks).toEqual(['Moby Dick', 'The Lord of the Rings']);
   });
 
-  xit('set most hated book', () => {
+  it('set most hated book', () => {
     /*
     You don't have an action or reducer to do this. You need to add them.
     And don't forget to add the property to initialState!
@@ -38,7 +38,7 @@ describe('Actions', () => {
     expect(store.getState().books.mostHatedBook).toEqual('Introduction to Linear Algebra');
   });
 
-  xit('logs in', () => {
+  it('logs in', () => {
     /*
     Let's use the other store branch.
     We don't want a branch's actions to affect the other one.
@@ -54,13 +54,12 @@ describe('Actions', () => {
     expect(store.getState().books).not.toHaveProperty(['email', 'token']);
   });
 
-  xit('handle unknown action', () => {
+  it('handle unknown action', () => {
     /*
     What if someone dispatches an action we don't know how to handle?
     We ignore it!
     You don't need to do anything for this test, it's only to show you how the ignoring part works.
     Look at the reducer. See the default case? It's returning the unmodified state.
-
     Some third-party libraries dispatch their own actions and have their own reducers to handle them.
     We ignore their actions in our reducers and let the libraries handle them.
     */
