@@ -12,26 +12,34 @@ import Topbar from './screens/Topbar';
 
 import '../scss/application.scss';
 
-function App(props) {
-  const { token, selectedUser } = props;
-  return (
-    <Router>
-      <div>
-        <Route exact path="/" component={Login} />
-        <Route render={() => token && <Topbar props={props} />} />
-        <Route
-          path="/game" render={(props)=> token ? <Game props={props} />
-            : <Redirect to="/" />
-          }
-        />
-        <Route path="/profile" render={() => token ? <Profile user={selectedUser} /> : <Redirect to="/" />} />
-      </div>
-    </Router>
-  );
+class App extends Component {
+  componentDidMount() {
+    if (window.localStorage.getItem('token')) {
+      this.props.sendToken(window.localStorage.getItem('token'));
+    }
+  }
+
+  render() {
+    const { token, selectedUser } = this.props;
+    return (
+      <Router>
+        <div>
+          <Route exact path="/" component={Login} />
+          <Route path="/game" render={() => token ? <div><Topbar /> <Game /> </div> : <Redirect to="/" />} />
+          <Route path="/profile" render={() => token ? <div><Topbar /> <Profile user={selectedUser} /></div> : <Redirect to="/" />} />
+          {token && <Redirect to="/game" />}
+        </div>
+      </Router>
+    );
+  }
 }
 
 const mapStateToProps = state => ({
-  token: state.login.token
+  token: state.login.token,
+  selectedUser: state.login.selectedUser
+});
+const mapDispatchToProps = dispatch => ({
+  sendToken: token => dispatch(sendToken(token))
 });
 
 App.propTypes = {
@@ -39,4 +47,4 @@ App.propTypes = {
   token: PropTypes.string
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

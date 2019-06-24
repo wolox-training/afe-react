@@ -6,7 +6,6 @@ import { fetchMatches } from '../../../redux/matches/actions';
 import styles from './styles.module.scss';
 import Board from './components/Board';
 import Matches from './components/Matches';
-// import Topbar from './components/Topbar';
 import { calculateWinner } from './utils';
 
 class Game extends Component {
@@ -75,8 +74,12 @@ class Game extends Component {
         <div className={styles.gameBoard}>
           <Board
             squares={current.squares}
-            onClick={(i) => this.handleClick(i)}
+            onClick={this.handleClick}
           />
+        </div>
+        <div className={styles.gameInfo}>
+          {status}
+          <ol>{moves}</ol>
         </div>
       </div>
     );

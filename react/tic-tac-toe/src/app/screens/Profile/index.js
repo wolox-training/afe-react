@@ -10,9 +10,9 @@ function Profile(props) {
       <h2 className={styles.profileText}>Profile</h2>
       <div className={styles.profile}>
         <FaUserCircle className={styles.profileLogo} />
-        <h2>Id: {props.login.id}</h2>
-        <h2>Email: {props.login.email}</h2>
-        <h2>Password: {props.login.password}</h2>
+        <h2>Id: {props.user.id}</h2>
+        <h2>Email: {props.user.email}</h2>
+        <h2>Password: {props.user.password}</h2>
       </div>
     </div>
   );

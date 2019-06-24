@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { SubmissionError } from 'redux-form';
 import PropTypes from 'prop-types';
 
-import { login, selectedUser } from '../../../redux/login/actions';
+import { login } from '../../../redux/login/actions';
 
 import LoginForm from './components/LoginForm';
 
