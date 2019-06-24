@@ -74,7 +74,7 @@ class Game extends Component {
         <div className={styles.gameBoard}>
           <Board
             squares={current.squares}
-            onClick={(i) => this.handleClick(i)}
+            onClick={this.handleClick}
           />
         </div>
         <div className={styles.gameInfo}>

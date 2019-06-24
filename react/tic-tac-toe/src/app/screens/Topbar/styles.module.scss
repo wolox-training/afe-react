@@ -1,0 +1,31 @@
+.navbar {
+  align-items: center;
+  background-color: white;
+  box-shadow: 0px 10px 13px -7px black;
+  display: flex;
+  height: 90px;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  width: 100%;
+}
+
+.navbarLogo {
+  height: 70px;
+  margin: 0 20px;
+}
+
+.icon {
+  cursor: pointer;
+  font-size: 24px;
+  margin: 0 20px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .navbar {
+    position: relative;
+  }
+
+  .navbar-text {
+    display: none;
+  }
+}
