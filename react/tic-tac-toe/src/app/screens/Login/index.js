@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { SubmissionError } from 'redux-form';
 import PropTypes from 'prop-types';
 
-import { login } from '../../../redux/login/actions';
+import actions from '../../../redux/login/actions';
 
 import LoginForm from './components/LoginForm';
 
@@ -26,7 +26,7 @@ class LoginFormContainer extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  login: value => dispatch(login(value))
+  login: value => dispatch(actions.dispatchToken(value))
 });
 
 LoginFormContainer.propTypes = {
