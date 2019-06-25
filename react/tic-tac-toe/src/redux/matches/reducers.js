@@ -1,17 +1,14 @@
-import { GET_MATCHES } from '../../constants';
+import { createReducer, completeReducer, completeState } from 'redux-recompose';
 
-const initialState = {
+import { actions } from './actions';
+
+const defaultState = completeState({
   matches: []
+});
+const reducerDescription = {
+  primaryActions: [actions.GET_MATCHES]
 };
 
-export default (state = initialState, action) => {
-  switch (action.type) {
-    case GET_MATCHES:
-      return {
-        ...state,
-        matches: action.payload
-      };
-    default:
-      return state;
-  }
-};
+const reducer = createReducer(defaultState, completeReducer(reducerDescription));
+
+export default reducer;

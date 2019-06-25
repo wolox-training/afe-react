@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchMatches } from '../../../redux/matches/actions';
+import { actionCreators as actions } from '../../../redux/matches/actions';
 
 import styles from './styles.module.scss';
 import Board from './components/Board';
@@ -91,7 +91,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getMatches: () => dispatch(fetchMatches())
+  getMatches: () => dispatch(actions.getMatches())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);
